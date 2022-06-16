@@ -1,0 +1,373 @@
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-05-19 15:41:42.713798552
+>>> 23*5
+115
+2022-05-19 15:54:33.39480838
+>>> 23+5
+28
+2022-05-19 15:54:43.88172848
+>>> 3+2*5
+13
+2022-05-19 15:54:58.995873086
+>>> (3+2)*5
+25
+2022-05-19 15:55:41.68502291
+>>> 5-4-8
+-7
+2022-05-19 15:55:51.700074971
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-05-19 15:59:05.479083146
+>>> sqet 2
+
+<interactive>:1:1: error:
+    • Variable not in scope: sqet :: t0 -> t
+    • Perhaps you meant ‘sqrt’ (imported from Prelude)
+2022-05-19 15:59:57.33230465
+>>> sqrt 2
+1.4142135623730951
+2022-05-19 16:01:52.394922701
+>>> double 3
+
+<interactive>:3:1: error: Variable not in scope: double :: t0 -> t
+2022-05-19 16:02:22.620582739
+>>> double 6
+
+<interactive>:4:1: error: Variable not in scope: double :: t0 -> t
+2022-05-19 16:05:17.667714243
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-06-09 14:55:39.548488675
+>>> 2+3*4
+14
+2022-06-09 14:58:09.16082058
+>>> :i sqrp
+
+<interactive>:1:1: error: Not in scope: ‘sqrp’
+2022-06-09 15:00:53.122088995
+>>> :i sqrt
+type Floating :: * -> Constraint
+class Fractional a => Floating a where
+  ...
+  sqrt :: a -> a
+  ...
+  	-- Defined in ‘GHC.Float’
+2022-06-09 15:01:08.606385716
+>>> sqrt(3^2+4^2)
+5.0
+2022-06-09 15:07:55.405963624
+>>> sqrt(25::Int)
+
+<interactive>:5:1: error:
+    • No instance for (Floating Int) arising from a use of ‘sqrt’
+    • In the expression: sqrt (25 :: Int)
+      In an equation for ‘it’: it = sqrt (25 :: Int)
+2022-06-09 15:08:25.490266697
+>>> sqrt8
+
+<interactive>:6:1: error:
+    • Variable not in scope: sqrt8
+    • Perhaps you meant ‘sqrt’ (imported from Prelude)
+2022-06-09 15:09:25.638900031
+>>> sqrt(25::Double)
+5.0
+2022-06-09 15:10:00.905030381
+>>> sqrt25
+
+<interactive>:8:1: error:
+    • Variable not in scope: sqrt25
+    • Perhaps you meant ‘sqrt’ (imported from Prelude)
+2022-06-09 15:10:15.266396954
+>>> sqrt 25
+5.0
+2022-06-09 15:10:25.018250944
+>>> hoge 25 :: Int
+
+<interactive>:10:1: error: Variable not in scope: hoge :: t0 -> Int
+2022-06-09 15:13:32.788793601
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-06-16 15:04:30.587646663
+>>> take 3
+
+<interactive>:1:1: error:
+    • No instance for (Show ([a0] -> [a0]))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+2022-06-16 15:04:46.713115561
+>>> take 3 [3,1,4,1,5]
+[3,1,4]
+2022-06-16 15:05:31.833132539
+>>> :/ src/First.hs
+unknown command ':/'
+use :? for help.
+2022-06-16 15:10:54.262304742
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruplp :: Int -> Int
+   7  quadruple x = (double x)
+Ok, no modules loaded.
+2022-06-16 15:11:52.484842837
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:6:1: error:
+    The type signature for ‘quadruplp’ lacks an accompanying binding
+      Perhaps you meant ‘quadruple’ (Defined at src/First.hs:7:1)
+  |
+6 | quadruplp :: Int -> Int
+  | ^^^^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:11:52.58099354
+>>> double
+
+<interactive>:6:1: error: Variable not in scope: double
+2022-06-16 15:13:01.061180369
+>>> take (double 2) [1,2,3,4,5]
+
+<interactive>:7:7: error:
+    Variable not in scope: double :: t0 -> Int
+2022-06-16 15:15:23.261984349
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruplp :: Int -> Int
+   7  quadruple x = (double x)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:6:1: error:
+    The type signature for ‘quadruplp’ lacks an accompanying binding
+      Perhaps you meant ‘quadruple’ (Defined at src/First.hs:7:1)
+  |
+6 | quadruplp :: Int -> Int
+  | ^^^^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:17:02.289912162
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:6:1: error:
+    The type signature for ‘quadruplp’ lacks an accompanying binding
+      Perhaps you meant ‘quadruple’ (Defined at src/First.hs:7:1)
+  |
+6 | quadruplp :: Int -> Int
+  | ^^^^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:17:02.388084763
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:17:40.290725182
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:17:40.388154173
+>>> take (double 2) [1,2,3,4,5]
+[1,2,3,4]
+2022-06-16 15:18:11.413912419
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:21:56.900013941
+>>> factorial 3
+6
+2022-06-16 15:22:18.07592246
+>>> factorial 4
+24
+2022-06-16 15:22:38.950757943
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average 
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:12:1: error:
+    Parse error: module header, import declaration
+    or top-level declaration expected.
+   |
+12 | average 
+   | ^^^^^^^
+Failed, no modules loaded.
+2022-06-16 15:33:16.468469952
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:33:35.616189325
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: Int -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: Int -> Int -> Int
+  16  ave xs = div (sum xs) (length xs)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:13:18: error:
+    • Couldn't match expected type ‘t2 Int’ with actual type ‘Int’
+    • In the first argument of ‘sum’, namely ‘xs’
+      In the first argument of ‘div’, namely ‘sum xs’
+      In the expression: sum xs `div` length xs
+   |
+13 | average xs = sum xs `div` length xs
+   |                  ^^
+
+src/First.hs:13:34: error:
+    • Couldn't match expected type ‘t3 a1’ with actual type ‘Int’
+    • In the first argument of ‘length’, namely ‘xs’
+      In the second argument of ‘div’, namely ‘length xs’
+      In the expression: sum xs `div` length xs
+   |
+13 | average xs = sum xs `div` length xs
+   |                                  ^^
+
+src/First.hs:16:10: error:
+    • Couldn't match expected type ‘Int -> Int’ with actual type ‘Int’
+    • Possible cause: ‘div’ is applied to too many arguments
+      In the expression: div (sum xs) (length xs)
+      In an equation for ‘ave’: ave xs = div (sum xs) (length xs)
+   |
+16 | ave xs = div (sum xs) (length xs)
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+src/First.hs:16:19: error:
+    • Couldn't match expected type ‘t0 Int’ with actual type ‘Int’
+    • In the first argument of ‘sum’, namely ‘xs’
+      In the first argument of ‘div’, namely ‘(sum xs)’
+      In the expression: div (sum xs) (length xs)
+   |
+16 | ave xs = div (sum xs) (length xs)
+   |                   ^^
+
+src/First.hs:16:31: error:
+    • Couldn't match expected type ‘t1 a0’ with actual type ‘Int’
+    • In the first argument of ‘length’, namely ‘xs’
+      In the second argument of ‘div’, namely ‘(length xs)’
+      In the expression: div (sum xs) (length xs)
+   |
+16 | ave xs = div (sum xs) (length xs)
+   |                               ^^
+Failed, no modules loaded.
+2022-06-16 15:37:25.091240589
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 15:38:11.581865096
+>>> avreage [1,2,3,4,5]
+
+<interactive>:20:1: error:
+    • Variable not in scope: avreage :: [a0] -> t
+    • Perhaps you meant ‘average’ (line 13)
+2022-06-16 15:38:38.193774144
+>>> average [1,2,3,4,5]
+3
+2022-06-16 15:39:00.317524941
+>>> :t take 3 [1,2,3,4,5]
+take 3 [1,2,3,4,5] :: Num a => [a]
+2022-06-16 15:49:56.126094108
+>>> init [1 ..5]
+[1,2,3,4]
+2022-06-16 16:07:22.987014158
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-16 16:14:35.411052092
+>>> myinit [1 ..5]
+[1,2,3,4]
+2022-06-16 16:14:52.26982608
+>>> myinit []
+*** Exception: src/First.hs:(19,1)-(20,29): Non-exhaustive patterns in function myinit
+
+2022-06-16 16:15:00.611698595
+>>> :q
+Leaving GHCi.
