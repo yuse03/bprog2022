@@ -371,3 +371,364 @@ Ok, one module loaded.
 2022-06-16 16:15:00.611698595
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-06-23 14:56:19.317601956
+>>> :i
+syntax: ':i <thing-you-want-info-about>'
+2022-06-23 14:56:23.591547043
+>>> :i 
+syntax: ':i <thing-you-want-info-about>'
+2022-06-23 14:56:30.113015602
+>>> :i num
+
+<interactive>:1:1: error: Not in scope: ‘num’
+2022-06-23 14:56:41.604085635
+>>> :i Num
+type Num :: * -> Constraint
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+  	-- Defined in ‘GHC.Num’
+instance Num NominalDiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.NominalDiffTime’
+instance Num DiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.DiffTime’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+2022-06-23 14:57:09.840894046
+>>> 1 == 2
+False
+2022-06-23 15:06:24.995173665
+>>> 1 < 2
+True
+2022-06-23 15:06:33.821682458
+>>> 1 < 1
+False
+2022-06-23 15:06:46.774658746
+>>> 1 <= 2
+True
+2022-06-23 15:06:58.958067794
+>>> 1 >- 2
+
+<interactive>:9:3: error:
+    • Variable not in scope: (>-) :: t0 -> t1 -> t
+    • Perhaps you meant one of these:
+        ‘-’ (imported from Prelude), ‘>=’ (imported from Prelude),
+        ‘>>’ (imported from Prelude)
+2022-06-23 15:07:10.919849934
+>>> 1 >= 2
+False
+2022-06-23 15:07:30.844016393
+>>> 'a' < 'b'
+True
+2022-06-23 15:11:29.3890905
+>>> 'a' < 'b'
+True
+2022-06-23 15:11:46.643543861
+>>> 'a' < 'B'
+False
+2022-06-23 15:12:00.327011147
+>>>  
+2022-06-23 15:12:04.69389306
+>>> ''
+
+<interactive>:15:1: error:
+    Parser error on `''`
+    Character literals may not be empty
+2022-06-23 15:12:10.18540649
+>>> 'ab' < 'b'
+
+<interactive>:16:1: error:
+    • Syntax error on 'ab'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'ab'
+2022-06-23 15:13:10.561328201
+>>> 1 /= 2
+True
+2022-06-23 15:16:17.228478255
+>>> 1 /= 1
+False
+2022-06-23 15:16:25.95368772
+>>> :info abs
+type Num :: * -> Constraint
+class Num a where
+  ...
+  abs :: a -> a
+  ...
+  	-- Defined in ‘GHC.Num’
+2022-06-23 15:30:12.556889639
+>>> abc (-234)
+
+<interactive>:20:1: error:
+    • Variable not in scope: abc :: t0 -> t
+    • Perhaps you meant ‘abs’ (imported from Prelude)
+2022-06-23 15:35:03.630300739
+>>> abs(-234)
+234
+2022-06-23 15:35:18.25132286
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-06-30 14:56:48.377243094
+>>> [ x ^ 2 | x <- [1 .. 5] ]
+[1,4,9,16,25]
+2022-06-30 15:02:32.839965025
+>>> map (^2) [1..5]
+[1,4,9,16,25]
+2022-06-30 15:05:35.9641554
+>>> [ x 'div' 2 | x <-  [1 .. 5]
+
+<interactive>:3:29: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+2022-06-30 15:13:50.878171481
+>>> [ x 'div' 2 | x <-  [1 .. 5]]
+
+<interactive>:4:5: error:
+    • Syntax error on 'div'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'div'
+2022-06-30 15:14:03.576359317
+>>> [ x `div` 2 | x <- [1 .. 5]]
+[0,1,1,2,2]
+2022-06-30 15:14:39.757068723
+>>> [ x `divMod` 2 | x <- [1 .. 5]]
+[(0,1),(1,0),(1,1),(2,0),(2,1)]
+2022-06-30 15:21:07.537323926
+>>> [ (x, y) | y <- [4, 5], x　<- "abc" ]
+[('a',4),('b',4),('c',4),('a',5),('b',5),('c',5)]
+2022-06-30 15:22:21.15412088
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+  21  
+  22  myconcat :: [[a]] -> [a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs ]
+Ok, no modules loaded.
+2022-06-30 15:30:09.532374117
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:30:09.6070947
+>>> [ 1 | _ <- [1 .. 5] ]
+[1,1,1,1,1]
+2022-06-30 15:47:57.645479171
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+  21  
+  22  myconcat :: [[a]] -> [a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs ]
+  24  
+  25  mylength :: [a]　-> Tnt
+  26  mylength xs = sum [ 1 | _ <- xs ]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:20: error:
+    Not in scope: type constructor or class ‘Tnt’
+    Perhaps you meant ‘Int’ (imported from Prelude)
+   |
+25 | mylength :: [a]　-> Tnt
+   |                    ^^^
+Failed, no modules loaded.
+2022-06-30 15:51:21.954496291
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:20: error:
+    Not in scope: type constructor or class ‘Tnt’
+    Perhaps you meant ‘Int’ (imported from Prelude)
+   |
+25 | mylength :: [a]　-> Tnt
+   |                    ^^^
+Failed, no modules loaded.
+2022-06-30 15:51:22.05132619
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+  21  
+  22  myconcat :: [[a]] -> [a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs ]
+  24  
+  25  mylength :: [a] -> Tnt
+  26  mylength xs = sum [ 1 | _ <- xs ]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:20: error:
+    Not in scope: type constructor or class ‘Tnt’
+    Perhaps you meant ‘Int’ (imported from Prelude)
+   |
+25 | mylength :: [a] -> Tnt
+   |                    ^^^
+Failed, no modules loaded.
+2022-06-30 15:51:43.432689426
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:20: error:
+    Not in scope: type constructor or class ‘Tnt’
+    Perhaps you meant ‘Int’ (imported from Prelude)
+   |
+25 | mylength :: [a] -> Tnt
+   |                    ^^^
+Failed, no modules loaded.
+2022-06-30 15:51:43.529904089
+>>> :e
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+  21  
+  22  myconcat :: [[a]] -> [a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs ]
+  24  
+  25  mylength :: [a] -> Tnt
+  26  mylength xs = sum [ 1 | _ <- xs ]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:20: error:
+    Not in scope: type constructor or class ‘Tnt’
+    Perhaps you meant ‘Int’ (imported from Prelude)
+   |
+25 | mylength :: [a] -> Tnt
+   |                    ^^^
+Failed, no modules loaded.
+2022-06-30 15:52:32.127792804
+>>> :l 
+Ok, no modules loaded.
+2022-06-30 15:52:32.22311632
+>>> :e
+No files to edit.
+2022-06-30 15:52:37.659849352
+>>> :e
+No files to edit.
+2022-06-30 15:53:00.049783151
+>>> :e
+No files to edit.
+2022-06-30 15:53:14.324359747
+>>> cwvwvw;vw:;v,
+
+<interactive>:20:11: error: parse error on input ‘;’
+2022-06-30 15:53:17.868871816
+>>> :e
+No files to edit.
+2022-06-30 15:53:40.954481962
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x = (double x)
+   8  
+   9  factorial :: Integer -> Integer
+  10  factorial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs) = x : (init xs)
+  21  
+  22  myconcat :: [[a]] -> [a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs ]
+  24  
+  25  mylength :: [a] -> Int
+  26  mylength xs = sum [ 1 | _ <- xs ]
+Ok, no modules loaded.
+2022-06-30 15:55:17.775830611
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:55:17.880760311
+>>> ['あ' .. 'ん'] 
+"\12354\12355\12356\12357\12358\12359\12360\12361\12362\12363\12364\12365\12366\12367\12368\12369\12370\12371\12372\12373\12374\12375\12376\12377\12378\12379\12380\12381\12382\12383\12384\12385\12386\12387\12388\12389\12390\12391\12392\12393\12394\12395\12396\12397\12398\12399\12400\12401\12402\12403\12404\12405\12406\12407\12408\12409\12410\12411\12412\12413\12414\12415\12416\12417\12418\12419\12420\12421\12422\12423\12424\12425\12426\12427\12428\12429\12430\12431\12432\12433\12434\12435"
+2022-06-30 15:56:13.517353818
+>>> putStrLn it
+あぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん
+2022-06-30 15:56:36.354996351
+>>> :q
+Leaving GHCi.
