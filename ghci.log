@@ -765,3 +765,14 @@ Ok, one module loaded.
 2022-07-21 15:38:17.876944056
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-07-21 16:04:27.2738954
+>>> :e
+No files to edit.
+2022-07-21 16:04:30.862499682
+>>> :e
+No files to edit.
+2022-07-21 16:04:43.841623815
+>>> :q
+Leaving GHCi.
