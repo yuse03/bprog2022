@@ -732,3 +732,36 @@ Ok, one module loaded.
 2022-06-30 15:56:36.354996351
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuuna/bprog2022/.ghci
+2022-07-21 15:36:01.107339307
+>>> .l src/Caesar.hs
+
+<interactive>:1:1: error: parse error on input ‘.’
+2022-07-21 15:36:35.553117329
+>>> :e src/Caesar.hs
+   1  module Caesar where
+   2  
+   3  import Data.Char
+Ok, no modules loaded.
+2022-07-21 15:36:57.570803727
+>>> :l src/Caesar.hs
+[1 of 1] Compiling Caesar           ( src/Caesar.hs, interpreted )
+Ok, one module loaded.
+2022-07-21 15:36:57.623711468
+>>> ord 'A'
+65
+2022-07-21 15:37:25.182095986
+>>> ord'a'
+
+<interactive>:5:1: error: Variable not in scope: ord'a'
+2022-07-21 15:37:37.473356307
+>>> ord 'a'
+97
+2022-07-21 15:37:46.040270785
+>>> q
+
+<interactive>:7:1: error: Variable not in scope: q
+2022-07-21 15:38:17.876944056
+>>> :q
+Leaving GHCi.
